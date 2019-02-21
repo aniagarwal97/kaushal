@@ -1,0 +1,37 @@
+<div>
+    <p class="feedback-question">Available tools ?</p>
+    <form id="submission_form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <ul class="vertical">
+            {% for submission in submissions_by_vote_count %} 
+            <div class="submission_list">
+                <div class="submission_info">
+                    <input class="submission_name" name="submission_id" type="checkbox" value="{{submission.id}}" id="{{submission.id}}"
+                    {% if submission.id in selected_submission %}checked{% endif %}> {{submission.name}} 
+                    <br/>
+                    <span class="faq-t"></span>
+                </div>
+                <span class="submission_description">{{submission.credits|safe}}</span>
+                <p class="submission_description">{{submission.description|safe}}</p>
+            </div>
+            {% endfor %}
+        </ul>
+        <div class="vote_button">
+            <input id="vote_send" type="submit" class="hollow button" value="Submit"/>
+        </div>
+    </form>
+</div>
+<br/>
+<div id="result-container" class="result-container">
+
+    <h3 class="feedback_title">Votes</h3>
+
+    <ul class="tool_list">
+        {% for submission in submissions_by_vote_count %} 
+        <li>
+            <p> {{submission.name}}: {{submission.votes}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
