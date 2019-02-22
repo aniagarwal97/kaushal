@@ -22,5 +22,5 @@ def submission(request):
             tools_votes = tools.votes
             tools.votes = tools_votes + 1
             tools.save()
-        return render(request, 'myapp/template/feedback_page.html', {"submissions_by_vote_count":submission_list, "display": "block"})
+        return HttpResponseRedirect('myapp/template/feedback_page.html?show=True')
     return render(request, 'myapp/template/feedback_page.html', {"submissions_by_vote_count":submission_list, "display": "none"})

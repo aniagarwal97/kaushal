@@ -1,6 +1,6 @@
 <div>
     <p class="feedback-question">Available tools ?</p>
-    <form id="submission_form" method="POST">
+    <form id="submission_form" method="POST" action="{% url 'myapp:submission' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <ul class="vertical">
@@ -18,12 +18,19 @@
             {% endfor %}
         </ul>
         <div class="vote_button">
-            <input id="vote_send" type="submit" class="hollow button" value="Submit" onClick = "myfunction()"/>
+            <input id="vote_send" type="submit" class="hollow button" value="Submit"/>
         </div>
     </form>
 </div>
+<script>
+window.onload = function() {
+    if(window.location.search){
+        document.getElementById("result-container").style.display = "block"
+    }
+};
+</script>
 <br/>
-<div id="result-container" class="result-container" style="display:{{display}}">
+<div id="result-container" class="result-container" style="display:none">
 
     <h3 class="feedback_title">Votes</h3>
 
