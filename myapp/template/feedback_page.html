@@ -18,12 +18,12 @@
             {% endfor %}
         </ul>
         <div class="vote_button">
-            <input id="vote_send" type="submit" class="hollow button" value="Submit"/>
+            <input id="vote_send" type="submit" class="hollow button" value="Submit" onClick = "myfunction()"/>
         </div>
     </form>
 </div>
 <br/>
-<div id="result-container" class="result-container">
+<div id="result-container" class="result-container" style="display:{{display}}">
 
     <h3 class="feedback_title">Votes</h3>
 
